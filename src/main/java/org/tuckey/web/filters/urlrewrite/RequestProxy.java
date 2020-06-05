@@ -55,6 +55,8 @@ import java.io.InputStream;
 import java.io.OutputStream;
 import java.net.MalformedURLException;
 import java.net.URL;
+import java.net.URLEncoder;
+import java.util.Base64;
 import java.util.Enumeration;
 
 /**
@@ -80,10 +82,11 @@ public class RequestProxy {
      * @throws java.io.IOException Passed on from the connection logic.
      */
     public static void execute(final String target, final HttpServletRequest hsRequest, final HttpServletResponse hsResponse) throws IOException {
-        log.info("execute, target is " + target);
+        String realTarget = target.replaceAll(" ", "%20");
+        log.info("execute, target is " + realTarget);
         log.info("response commit state: " + hsResponse.isCommitted());
 
-        if (StringUtils.isBlank(target)) {
+        if (StringUtils.isBlank(realTarget)) {
             log.error("The target address is not given. Please provide a target address.");
             return;
         }
@@ -91,7 +94,7 @@ public class RequestProxy {
         log.info("checking url");
         final URL url;
         try {
-            url = new URL(target);
+            url = new URL(realTarget);
         } catch (MalformedURLException e) {
             log.error("The provided target url is not valid.", e);
             return;

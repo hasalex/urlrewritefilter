@@ -4,7 +4,7 @@
     <groupId>org.tuckey</groupId>
     <artifactId>urlrewritefilter</artifactId>
     <packaging>jar</packaging>
-    <version>4.0.4</version>
+    <version>4.0.4-sw</version>
     <name>UrlRewriteFilter</name>
     <url>http://www.tuckey.org/urlrewrite/</url>
     <inceptionYear>2001</inceptionYear>
@@ -28,16 +28,6 @@
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
     </properties>
 
-    <mailingLists>
-        <mailingList>
-            <name>UrlRewrite users</name>
-            <post>urlrewrite@googlegroups.com</post>
-            <subscribe>urlrewrite+subscribe@googlegroups.com</subscribe>
-            <unsubscribe>urlrewrite+unsubscribe@googlegroups.com</unsubscribe>
-            <archive>https://groups.google.com/d/forum/urlrewrite</archive>
-        </mailingList>
-    </mailingLists>
-
     <licenses>
         <license>
             <name>BSD</name>
@@ -47,20 +37,17 @@
     </licenses>
 
     <scm>
-        <connection>scm:svn:https://urlrewritefilter.googlecode.com/svn/tags/urlrewritefilter-4.0.4</connection>
-        <developerConnection>scm:svn:https://urlrewritefilter.googlecode.com/svn/tags/urlrewritefilter-4.0.4</developerConnection>
-        <url>https://urlrewritefilter.googlecode.com/svn/tags/urlrewritefilter-4.0.4</url>
+        <connection>scm:git:git@github.com:hasalex/urlrewritefilter.git</connection>
     </scm>
 
     <developers>
         <developer>
             <name>Paul Tuckey</name>
         </developer>
+        <developer>
+            <name>Alexis Hassler</name>
+        </developer>
     </developers>
-
-    <issueManagement>
-        <url>http://code.google.com/p/urlrewritefilter/issues/list</url>
-    </issueManagement>
 
     <build>
         <resources>
@@ -80,32 +67,8 @@
                 <artifactId>maven-compiler-plugin</artifactId>
                 <version>2.5.1</version>
                 <configuration>
-                    <source>1.5</source>
-                    <target>1.5</target>
-                </configuration>
-            </plugin>
-            <plugin>
-                <groupId>org.codehaus.mojo</groupId>
-                <artifactId>buildnumber-maven-plugin</artifactId>
-                <version>1.1</version>
-                <executions>
-                    <execution>
-                        <phase>validate</phase>
-                        <goals>
-                            <goal>create</goal>
-                        </goals>
-                    </execution>
-                </executions>
-                <configuration>
-                    <doCheck>false</doCheck>
-                    <doUpdate>true</doUpdate>
-                </configuration>
-            </plugin>
-            <plugin>
-                <artifactId>maven-release-plugin</artifactId>
-                <version>2.1</version>
-                <configuration>
-                    <tagBase>https://urlrewritefilter.googlecode.com/svn/tags</tagBase>
+                    <source>1.8</source>
+                    <target>1.8</target>
                 </configuration>
             </plugin>
             <plugin>
@@ -188,29 +151,5 @@
             <optional>true</optional>
         </dependency>
     </dependencies>
-
-    <reporting>
-        <plugins>
-            <plugin>
-                <artifactId>maven-jxr-plugin</artifactId>
-                <version>2.3</version>
-            </plugin>
-            <plugin>
-                <artifactId>maven-surefire-report-plugin</artifactId>
-                <version>2.12</version>
-            </plugin>
-            <plugin>
-                <artifactId>maven-javadoc-plugin</artifactId>
-                <version>2.8.1</version>
-                <configuration>
-                    <quiet>true</quiet>
-                </configuration>
-            </plugin>
-            <plugin>
-                <artifactId>maven-project-info-reports-plugin</artifactId>
-                <version>2.4</version>
-            </plugin>
-        </plugins>
-    </reporting>
 
 </project>
