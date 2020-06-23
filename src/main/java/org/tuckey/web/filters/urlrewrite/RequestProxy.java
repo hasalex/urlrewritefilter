@@ -56,6 +56,7 @@ import java.io.OutputStream;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.net.URLEncoder;
+import java.nio.charset.StandardCharsets;
 import java.util.Base64;
 import java.util.Enumeration;
 
@@ -82,7 +83,8 @@ public class RequestProxy {
      * @throws java.io.IOException Passed on from the connection logic.
      */
     public static void execute(final String target, final HttpServletRequest hsRequest, final HttpServletResponse hsResponse) throws IOException {
-        String realTarget = target.replaceAll(" ", "%20");
+        int index = target.lastIndexOf('/');
+        String realTarget = target.substring(0, index) + '/' + URLEncoder.encode(target.substring(index+1), StandardCharsets.UTF_8.name()).replaceAll("\\+", "%20");
         log.info("execute, target is " + realTarget);
         log.info("response commit state: " + hsResponse.isCommitted());
 
